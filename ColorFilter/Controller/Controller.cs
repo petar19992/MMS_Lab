@@ -125,5 +125,19 @@ namespace ColorFilter.Controller
         {
             m_model.compress();
         }
+
+        ////////////Cetvrta
+        public void handleWather()
+        {
+            m_model.Water(15, true);
+        }
+        public void handleMusic()
+        {
+            m_model.PlaySound();
+        }
+        public void handlePlayMusic()
+        {
+            m_model.PlayMusic();
+        }
     }
 }

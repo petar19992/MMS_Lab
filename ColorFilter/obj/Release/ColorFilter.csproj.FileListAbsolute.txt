@@ -9,3 +9,14 @@ D:\Petar Ljubic\Elektronki\VIII semestar\Multimedijalni Sistemi\Projekat\ColorFi
 D:\Petar Ljubic\Elektronki\VIII semestar\Multimedijalni Sistemi\Projekat\ColorFilter\ColorFilter\bin\Release\ColorFilter.pdb
 D:\Petar Ljubic\Elektronki\VIII semestar\Multimedijalni Sistemi\Projekat\ColorFilter\ColorFilter\obj\Release\ColorFilter.exe
 D:\Petar Ljubic\Elektronki\VIII semestar\Multimedijalni Sistemi\Projekat\ColorFilter\ColorFilter\obj\Release\ColorFilter.pdb
+C:\Users\Petar\Documents\GitHub\MMS_Lab\ColorFilter\bin\Release\ColorFilter.exe.config
+C:\Users\Petar\Documents\GitHub\MMS_Lab\ColorFilter\obj\Release\ColorFilter.exe
+C:\Users\Petar\Documents\GitHub\MMS_Lab\ColorFilter\obj\Release\ColorFilter.pdb
+C:\Users\Petar\Documents\GitHub\MMS_Lab\ColorFilter\bin\Release\ColorFilter.exe
+C:\Users\Petar\Documents\GitHub\MMS_Lab\ColorFilter\bin\Release\ColorFilter.pdb
+C:\Users\Petar\Documents\GitHub\MMS_Lab\ColorFilter\obj\Release\ColorFilter.csprojResolveAssemblyReference.cache
+C:\Users\Petar\Documents\GitHub\MMS_Lab\ColorFilter\obj\Release\ColorFilter.ChannelsForm.resources
+C:\Users\Petar\Documents\GitHub\MMS_Lab\ColorFilter\obj\Release\ColorFilter.Form1.resources
+C:\Users\Petar\Documents\GitHub\MMS_Lab\ColorFilter\obj\Release\ColorFilter.Histogram.resources
+C:\Users\Petar\Documents\GitHub\MMS_Lab\ColorFilter\obj\Release\ColorFilter.Properties.Resources.resources
+C:\Users\Petar\Documents\GitHub\MMS_Lab\ColorFilter\obj\Release\ColorFilter.csproj.GenerateResource.Cache

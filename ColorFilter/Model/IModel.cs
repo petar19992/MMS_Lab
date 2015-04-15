@@ -44,5 +44,11 @@ namespace ColorFilter.Model
         void checkUndo();
         void FrequencyPermissionRed(int MaxValue, int flag);
         void compress();
+
+        ///Cetvrta
+        ///
+        bool Water(short nWave, bool bSmoothing);
+        void PlaySound();
+        void PlayMusic();
     }
 }

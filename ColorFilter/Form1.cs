@@ -267,5 +267,29 @@ namespace ColorFilter
             catch { }
             this.Invalidate();
         }
+
+        private void watherToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            m_controller.handleWather();
+            m_controller.getBitmap();
+            controller2.getBitmap();
+            controller2.handleconvertRGBtoCMY();
+            controller2.returnCMY();
+            this.Invalidate();
+        }
+
+        private void editSoundToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            m_controller.handleMusic();
+
+        }
+
+        private void playSoundToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            m_controller.handlePlayMusic();
+        }
+
+
+
     }
 }

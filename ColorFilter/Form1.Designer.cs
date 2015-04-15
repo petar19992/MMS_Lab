@@ -55,6 +55,10 @@
             this.hIstogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rGBHistogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.watherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.soundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editSoundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playSoundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +71,8 @@
             this.filtersToolStripMenuItem,
             this.editToolStripMenuItem,
             this.convolutionToolStripMenuItem,
-            this.hIstogramToolStripMenuItem});
+            this.hIstogramToolStripMenuItem,
+            this.soundToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(508, 24);
@@ -135,7 +140,8 @@
             this.gammaToolStripMenuItem,
             this.brightnessToolStripMenuItem,
             this.invertUnsafeToolStripMenuItem,
-            this.gammaUnsafeToolStripMenuItem});
+            this.gammaUnsafeToolStripMenuItem,
+            this.watherToolStripMenuItem});
             this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
             this.filtersToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.filtersToolStripMenuItem.Text = "Filters";
@@ -280,6 +286,36 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // watherToolStripMenuItem
+            // 
+            this.watherToolStripMenuItem.Name = "watherToolStripMenuItem";
+            this.watherToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.watherToolStripMenuItem.Text = "Wather";
+            this.watherToolStripMenuItem.Click += new System.EventHandler(this.watherToolStripMenuItem_Click);
+            // 
+            // soundToolStripMenuItem
+            // 
+            this.soundToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editSoundToolStripMenuItem,
+            this.playSoundToolStripMenuItem});
+            this.soundToolStripMenuItem.Name = "soundToolStripMenuItem";
+            this.soundToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.soundToolStripMenuItem.Text = "Sound";
+            // 
+            // editSoundToolStripMenuItem
+            // 
+            this.editSoundToolStripMenuItem.Name = "editSoundToolStripMenuItem";
+            this.editSoundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editSoundToolStripMenuItem.Text = "Edit Sound";
+            this.editSoundToolStripMenuItem.Click += new System.EventHandler(this.editSoundToolStripMenuItem_Click);
+            // 
+            // playSoundToolStripMenuItem
+            // 
+            this.playSoundToolStripMenuItem.Name = "playSoundToolStripMenuItem";
+            this.playSoundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.playSoundToolStripMenuItem.Text = "Play Sound";
+            this.playSoundToolStripMenuItem.Click += new System.EventHandler(this.playSoundToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,6 +363,10 @@
         private System.Windows.Forms.ToolStripMenuItem hIstogramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rGBHistogramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compressAndSaveFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem watherToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem soundToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editSoundToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem playSoundToolStripMenuItem;
     }
 }
 

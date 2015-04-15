@@ -33,5 +33,10 @@ namespace ColorFilter.Controller
         void handleFrequencyPermission(int maxValue, int flag);
 
         void handleCompress();
+
+        ///Cetvrta
+        void handleWather();
+        void handleMusic();
+        void handlePlayMusic();
     }
 }
