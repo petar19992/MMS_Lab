@@ -1073,8 +1073,7 @@ namespace ColorFilter.Model
         }
         public bool Water(short nWave, bool bSmoothing)
         {
-
-
+            uAr.pushBitmaptoUndo(bmp);
             int nWidth = bmp.Width;
             int nHeight = bmp.Height;
 
@@ -1270,52 +1269,91 @@ namespace ColorFilter.Model
 
         public void PlaySound()
         {
-            byte[] input = File.ReadAllBytes("2CH.wav");
 
-            short noChannels = BitConverter.ToInt16(input, 22);
-            short bps = BitConverter.ToInt16(input, 34);
-            int BPS = bps / 8;
-
-            int data = input.Length - 44;
-            int offset = data / noChannels; //br bajtova po kanalu
-            int samples = offset / BPS; //broj sempla po kanalu
-
-            byte[] m2 = new byte[input.Length - 44];
-            Buffer.BlockCopy(input, 44, m2, 0, m2.Length);
-
-            byte[] skok = new byte[noChannels];
-            for (int i = 0; i < noChannels; i++)
+            OpenFileDialog dlg = new OpenFileDialog();
+            // Set filter for file extension and default file extension 
+            dlg.DefaultExt = ".wav";
+            dlg.Filter = "WAV Files (*.wav)|*.wav";
+            dlg.InitialDirectory = @"";
+            byte[] a = new byte[1];
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                skok[0] = 100;
-                skok[1] = 255;
-            }
+                byte[] input = File.ReadAllBytes(dlg.FileName);
+                short noChannels = BitConverter.ToInt16(input, 22);
+                short bps = BitConverter.ToInt16(input, 34);
+                int BPS = bps / 8;
 
+                int data = input.Length - 44;
+                int offset = data / noChannels; //br bajtova po kanalu
+                int samples = offset / BPS; //broj sempla po kanalu
 
+                byte[] m2 = new byte[input.Length - 44]; //Pokupimo samo zvuk
+                Buffer.BlockCopy(input, 44, m2, 0, m2.Length); //Prebacimo ga iz inputa u m2
 
+                byte[] skok = new byte[noChannels];
+                Random rand = new Random();
+                
+                for (int i = 0; i < noChannels; i++)
+                {
+                    skok[i] = Convert.ToByte(100+rand.Next(0,155)); //Izlupam neke vrednosti
+                }
 
-            for (int j = 0; j < noChannels; j++)
-                for (int k = 0; k < samples; k++)
-                    for (int i = 0; i < BPS; i++) // kad prodjem ovu for petlju, idem na sl kanal.... 
+                for (int j = 0; j < noChannels; j++)
+                    for (int k = 0; k < samples; k++)
+                        for (int i = 0; i < BPS; i++) // kad prodjem ovu for petlju, idem na sl kanal.... 
+                        {
+                            m2[j * BPS + k * BPS * noChannels + i] = (byte)((m2[j * BPS + k * BPS * noChannels + i] > skok[j])
+                                                                        ? skok[j] : m2[j * BPS + k * BPS * noChannels + i]);
+                        }
+
+                Buffer.BlockCopy(m2, 0, input, 44, m2.Length);
+                sound = input;
+                File.WriteAllBytes("editSound.wav", input);
+                //MessageBox.Show("File je sacuvan kao editSound.Wav");
+                DialogResult dialogResult = MessageBox.Show("File je sacuvan, da li zelite da ga pustite ? ", "OK", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (sound != null)
                     {
-                        m2[j * BPS + k * BPS * noChannels + i] = (byte)((m2[j * BPS + k * BPS * noChannels + i] > skok[j])
-                                                                    ? skok[j] : m2[j * BPS + k * BPS * noChannels + i]);
+                        using (MemoryStream ms = new MemoryStream(sound))
+                        {
+                            SoundPlayer sp = new SoundPlayer(ms);
+                            sp.Play();
+                        }
                     }
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                }
 
-            Buffer.BlockCopy(m2, 0, input, 44, m2.Length);
-            sound = input;
-            File.WriteAllBytes("22ch.wav", input);
+            }    
         }
 
         public void PlayMusic()
         {
-            if (sound != null)
+             OpenFileDialog dlg = new OpenFileDialog();
+            // Set filter for file extension and default file extension 
+            dlg.DefaultExt = ".wav";
+            dlg.Filter = "WAV Files (*.wav)|*.wav";
+            dlg.InitialDirectory = @"";
+            byte[] a = new byte[1];
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                using (MemoryStream ms = new MemoryStream(sound))
+                byte[] input = File.ReadAllBytes(dlg.FileName);
+                using (MemoryStream ms = new MemoryStream(input))
                 {
                     SoundPlayer sp = new SoundPlayer(ms);
                     sp.Play();
                 }
             }
+            //if (sound != null)
+            //{
+            //    using (MemoryStream ms = new MemoryStream(sound))
+            //    {
+            //        SoundPlayer sp = new SoundPlayer(ms);
+            //        sp.Play();
+            //    }
+            //}
         }
      }
  }

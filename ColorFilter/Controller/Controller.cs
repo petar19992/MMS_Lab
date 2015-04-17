@@ -130,6 +130,9 @@ namespace ColorFilter.Controller
         public void handleWather()
         {
             m_model.Water(15, true);
+
+            m_model.saveGamaToUndo();
+            m_model.clearRedo();
         }
         public void handleMusic()
         {
