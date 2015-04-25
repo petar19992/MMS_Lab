@@ -357,7 +357,7 @@ namespace ColorFilter
             {
                 int maxCount = data.Max();
                 int maxValue = ((255 - borderRed) * maxCount) / 255;
-                m_controller.handleFrequencyPermission(maxValue,0); //0 za crvenu !!!
+                m_controller.handleFrequencyPermission(maxValue,Color.Red); //0 za crvenu !!!
                 m_controller.getBitmap();
                 m_controller.returnCMY();
                 m_controller.handleChannels();
@@ -370,7 +370,7 @@ namespace ColorFilter
             {
                 int maxCount = data2.Max();
                 int maxValue = ((255 - borderGreen) * maxCount) / 255;
-                m_controller.handleFrequencyPermission(maxValue, 1); //1 za ZELENU
+                m_controller.handleFrequencyPermission(maxValue, Color.Green); //1 za ZELENU
                 m_controller.getBitmap();
                 m_controller.returnCMY();
                 m_controller.handleChannels();
@@ -383,7 +383,7 @@ namespace ColorFilter
             {
                 int maxCount = data3.Max();
                 int maxValue = ((255 - borderBlue) * maxCount) / 255;
-                m_controller.handleFrequencyPermission(maxValue, 2); //2 za plavu
+                m_controller.handleFrequencyPermission(maxValue, Color.Blue); //2 za plavu
                 m_controller.getBitmap();
                 m_controller.returnCMY();
                 m_controller.handleChannels();

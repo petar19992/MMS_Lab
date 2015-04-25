@@ -18,9 +18,18 @@ namespace ColorFilter.Model
         public Bitmap cyan;
         public Bitmap magenta;
         public Bitmap yellow;
+        RGB_CMY rgbTOcmy;
+        FiltersSimple filter;
+        FiltersConvolutions convolutionFilter;
         //public UndoAndRedo uAr;
         public IList<int>[] m_channelHistograms = new IList<int>[3];
 
+        public ModelImage()
+        {
+            filter = new FiltersSimple();
+            rgbTOcmy = new RGB_CMY();
+            convolutionFilter = new FiltersConvolutions();
+        }
 
         public bool Load() 
         {
@@ -145,9 +154,6 @@ namespace ColorFilter.Model
         public bool Apply(Pipeline o)
         {
             String wish = o.nameOfFunctuon;
-            FiltersSimple filter = new FiltersSimple();
-            RGB_CMY rgbTOcmy = new RGB_CMY();
-            FiltersConvolutions convolutionFilter = new FiltersConvolutions();
             switch(wish)
             {
                 case "invert": 

@@ -111,6 +111,8 @@ namespace ColorFilter.Controller
         {
             //m_model.convertRGBtoCMYUnsafe();
             m_view.bitmap = (Bitmap)m_model_image.display()[0];
+            //handleconvertRGBtoCMY();
+            //returnCMY();
         }
         public void handleconvertRGBtoCMY()
         {
@@ -167,7 +169,7 @@ namespace ColorFilter.Controller
             IList<int>[] tmp = (IList<int>[])m_model_image.display()[4];
             return tmp[0];
         }
-        public void handleFrequencyPermission(int maxValue, int flag)
+        public void handleFrequencyPermission(int maxValue, Color flag)
         {
             //m_model.FrequencyPermissionRed(maxValue,flag);
             m_model_image.Apply(new Pipeline("FrequencyPermission", new Object[] { maxValue, flag }));

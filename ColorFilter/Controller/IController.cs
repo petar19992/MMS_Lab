@@ -30,7 +30,7 @@ namespace ColorFilter.Controller
         void handleChannels();
         IList<int> returnCyanChannel();
 
-        void handleFrequencyPermission(int maxValue, int flag);
+        void handleFrequencyPermission(int maxValue, Color flag);
 
         void handleCompress();
 
