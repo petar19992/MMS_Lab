@@ -26,18 +26,18 @@ namespace ColorFilter.Model
         }
         public Node doSomething(Node n)
         {
-            undo.Add(n);
+            undo.Add(n.Clone());
             redo.Clear();
             return n;
         }
 
-        public Node doUndo(Node current)
+        public Node doUndo()
         {
             Node tmp;
             try
             {
                 tmp= undo.Last();
-                redo.Add(tmp);
+                redo.Add(tmp.Clone());
                 undo.RemoveAt(undo.Count - 1);
                 return undo.Last();
             }
@@ -53,11 +53,11 @@ namespace ColorFilter.Model
             try
             {
                 tmp = redo.Last();
-                undo.Add(tmp);
+                undo.Add(tmp.Clone());
                 redo.RemoveAt(redo.Count - 1);
                 return tmp;
             }
-            catch { return null; }
+            catch { return undo.Last(); }
             finally
             {
             } 

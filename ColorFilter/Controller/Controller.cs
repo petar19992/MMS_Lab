@@ -15,7 +15,6 @@ namespace ColorFilter.Controller
         IModel2 m_model_sound;
         //IModel m_model;
         IView m_view;
-        UndoRedo undo_redo;
         public bool isOpen
         {
             get;
@@ -131,11 +130,26 @@ namespace ColorFilter.Controller
         //Ovo treba da sredim
         public void handleUndo()
         {
+            try
+            {
+                Node tmp = UndoRedo.getInstance().doUndo();
+                if (tmp.type.Equals("Bitmap"))
+                {
+                    m_view.bitmap = (Bitmap)tmp.element;
+                }
+            }
+            catch { m_view.bitmap = null; }
+            
             //m_model.Undo();
             //m_view.bitmap = m_model.returnBitmap();
         }
         public void handleRedo()
         {
+            Node tmp = UndoRedo.getInstance().doRedo();
+            if (tmp.type.Equals("Bitmap"))
+            {
+                m_view.bitmap = (Bitmap)tmp.element;
+            }
             //m_model.Redo();
             //m_view.bitmap = m_model.returnBitmap();
         }

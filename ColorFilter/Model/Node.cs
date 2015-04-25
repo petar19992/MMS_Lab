@@ -16,5 +16,9 @@ namespace ColorFilter.Model
             type = t;
             element = el;
         }
+        public Node Clone()
+        {
+            return new Node(type, element);
+        }
     }
 }

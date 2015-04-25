@@ -187,7 +187,7 @@ namespace ColorFilter.Model
         {
             get 
             {
-                return bmp;
+                return bmp.Clone();
             }
             set
             {
