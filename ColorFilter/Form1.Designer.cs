@@ -46,6 +46,7 @@
             this.brightnessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.invertUnsafeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gammaUnsafeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.watherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,11 +55,11 @@
             this.edgeDetectHomogenityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hIstogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rGBHistogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.watherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.soundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editSoundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playSoundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.loadSoundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -213,6 +214,13 @@
             this.gammaUnsafeToolStripMenuItem.Text = "GammaUnsafe";
             this.gammaUnsafeToolStripMenuItem.Click += new System.EventHandler(this.gammaUnsafeToolStripMenuItem_Click);
             // 
+            // watherToolStripMenuItem
+            // 
+            this.watherToolStripMenuItem.Name = "watherToolStripMenuItem";
+            this.watherToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.watherToolStripMenuItem.Text = "Wather";
+            this.watherToolStripMenuItem.Click += new System.EventHandler(this.watherToolStripMenuItem_Click);
+            // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -274,28 +282,10 @@
             this.rGBHistogramToolStripMenuItem.Text = "RGB histogram";
             this.rGBHistogramToolStripMenuItem.Click += new System.EventHandler(this.rGBHistogramToolStripMenuItem_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(13, 41);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(483, 342);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
-            // watherToolStripMenuItem
-            // 
-            this.watherToolStripMenuItem.Name = "watherToolStripMenuItem";
-            this.watherToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.watherToolStripMenuItem.Text = "Wather";
-            this.watherToolStripMenuItem.Click += new System.EventHandler(this.watherToolStripMenuItem_Click);
-            // 
             // soundToolStripMenuItem
             // 
             this.soundToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadSoundToolStripMenuItem,
             this.editSoundToolStripMenuItem,
             this.playSoundToolStripMenuItem});
             this.soundToolStripMenuItem.Name = "soundToolStripMenuItem";
@@ -315,6 +305,25 @@
             this.playSoundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.playSoundToolStripMenuItem.Text = "Play Sound";
             this.playSoundToolStripMenuItem.Click += new System.EventHandler(this.playSoundToolStripMenuItem_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Location = new System.Drawing.Point(13, 41);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(483, 342);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // loadSoundToolStripMenuItem
+            // 
+            this.loadSoundToolStripMenuItem.Name = "loadSoundToolStripMenuItem";
+            this.loadSoundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loadSoundToolStripMenuItem.Text = "Load sound";
+            this.loadSoundToolStripMenuItem.Click += new System.EventHandler(this.loadSoundToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -367,6 +376,7 @@
         private System.Windows.Forms.ToolStripMenuItem soundToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editSoundToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem playSoundToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadSoundToolStripMenuItem;
     }
 }
 

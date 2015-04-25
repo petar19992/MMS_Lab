@@ -18,7 +18,7 @@ namespace ColorFilter.Model
         public Bitmap cyan;
         public Bitmap magenta;
         public Bitmap yellow;
-        public UndoAndRedo uAr;
+        //public UndoAndRedo uAr;
         public IList<int>[] m_channelHistograms = new IList<int>[3];
 
 
@@ -142,7 +142,7 @@ namespace ColorFilter.Model
         {
             return true;
         }
-        public bool Apply(Node o)
+        public bool Apply(Pipeline o)
         {
             String wish = o.nameOfFunctuon;
             FiltersSimple filter = new FiltersSimple();

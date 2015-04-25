@@ -8,13 +8,13 @@ namespace ColorFilter.Model
 {
     public class Node
     {
-        public String nameOfFunctuon;
-        public Object[] listOfArguments;
+        public String type;
+        public Object element;
 
-        public Node(String function, Object[] arguments)
+        public Node(String t, Object el)
         {
-            nameOfFunctuon = function;
-            listOfArguments = arguments;
+            type = t;
+            element = el;
         }
     }
 }

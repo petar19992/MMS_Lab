@@ -38,5 +38,6 @@ namespace ColorFilter.Controller
         void handleWather();
         void handleMusic();
         void handlePlayMusic();
+        void handleLoadSound();
     }
 }

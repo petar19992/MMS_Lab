@@ -26,14 +26,38 @@ namespace ColorFilter.Model
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 byte[] input = File.ReadAllBytes(dlg.FileName);
+                objectValue = input;
                 return true;
             }
             return false;
         }
         public bool Save() { return true; }
-        public bool Apply(Node o)
+        public bool Apply(Pipeline o)
         {
-            byte[] input = sound;
+            String wish = o.nameOfFunctuon;
+            switch (wish)
+            {
+                case "edit":
+                    objectValue = (byte[])editSound();
+                    break;
+                case "play":
+                    display();
+                    break;
+                
+            }
+            return true;          
+ 
+        }
+
+        public byte[] editSound()
+        {
+           
+            if (objectValue == null)
+            {
+                if (!Load())
+                    return null;
+            }
+            byte[] input = (byte[])objectValue;
             short noChannels = BitConverter.ToInt16(input, 22);
             short bps = BitConverter.ToInt16(input, 34);
             int BPS = bps / 8;
@@ -68,22 +92,21 @@ namespace ColorFilter.Model
             DialogResult dialogResult = MessageBox.Show("File je sacuvan, da li zelite da ga pustite ? ", "OK", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                if (sound != null)
+                if (input != null)
                 {
                     using (MemoryStream ms = new MemoryStream(sound))
                     {
                         SoundPlayer sp = new SoundPlayer(ms);
                         sp.Play();
                     }
-                    return true;
+                    return input;
                 }
             }
             else if (dialogResult == DialogResult.No)
             {
-                return true;
+                return input;
             }
-            return false;
- 
+            return null;
         }
 
         public Object objectValue

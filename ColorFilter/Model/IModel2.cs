@@ -15,7 +15,7 @@ namespace ColorFilter.Model
     {
         bool Load();
         bool Save();
-        bool Apply(Node o);
+        bool Apply(Pipeline o);
 
         Object[] display();
 

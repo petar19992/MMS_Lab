@@ -20,17 +20,17 @@ namespace ColorFilter
     public partial class Form1 : Form,IView
     {
         IController m_controller;
-        ColorFilter.Model.Model model;
+        //ColorFilter.Model.Model model;
         Controller.Controller controller2;
         ModelImage modelImage;
         ModelSound modelSound;
         public Form1()
         {
             InitializeComponent();
-            model = new Model.Model();
+            //model = new Model.Model();
             modelImage= new ModelImage();
             modelSound=new ModelSound();
-            Controller.Controller controller = new Controller.Controller(model,modelImage,modelSound, this);
+            Controller.Controller controller = new Controller.Controller(/*model,*/modelImage,modelSound, this);
         }
 
         public void AddListener(IController controller)
@@ -59,7 +59,7 @@ namespace ColorFilter
             if (controller2 == null || !controller2.isOpen)
             {
                 ChannelsForm cf = new ChannelsForm();
-                controller2 = new Controller.Controller(model, modelImage, modelSound, cf);
+                controller2 = new Controller.Controller(/*model, */modelImage, modelSound, cf);
                 cf.Show();
             }
             else
@@ -312,6 +312,11 @@ namespace ColorFilter
         private void playSoundToolStripMenuItem_Click(object sender, EventArgs e)
         {
             m_controller.handlePlayMusic();
+        }
+
+        private void loadSoundToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            m_controller.handleLoadSound();
         }
 
 

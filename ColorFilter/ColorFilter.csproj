@@ -69,15 +69,14 @@
     <Compile Include="Model\ConvMatrix.cs" />
     <Compile Include="Model\FiltersConvolutions.cs" />
     <Compile Include="Model\FiltersSimple.cs" />
-    <Compile Include="Model\IModel.cs" />
     <Compile Include="Model\IModel2.cs" />
     <Compile Include="Model\Matrix.cs" />
-    <Compile Include="Model\Model.cs" />
     <Compile Include="Model\ModelImage.cs" />
     <Compile Include="Model\ModelSound.cs" />
     <Compile Include="Model\Node.cs" />
+    <Compile Include="Model\Pipeline.cs" />
     <Compile Include="Model\RGB_CMY.cs" />
-    <Compile Include="Model\UndoAndRedo.cs" />
+    <Compile Include="Model\UndoRedo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\IView.cs" />
