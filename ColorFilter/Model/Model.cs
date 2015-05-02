@@ -14,22 +14,28 @@ namespace ColorFilter.Model
 {
     public class Model:IModel
     {
+        //Prebaceno 
         public Bitmap bmp;
         Bitmap cyan;
         Bitmap magenta;
         Bitmap yellow;
+
+        //Nije
         public byte[] imageInBytes;
         public UndoAndRedo uAr;
 
         byte[] sound;
 
+
+        //Prebaceno
         public IList<int>[] m_channelHistograms = new IList<int>[3];
 
         public Model()
         {
             uAr = new UndoAndRedo();
         }
-        
+
+        //Prebaceno
         public void loadBitmapFromFile()
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -55,6 +61,8 @@ namespace ColorFilter.Model
                 }
             }  
         }
+
+        //Prebaceno
         public void loadMyExtension(OpenFileDialog dlg) 
         {
             byte[] bytes = File.ReadAllBytes(dlg.FileName);
@@ -144,6 +152,7 @@ namespace ColorFilter.Model
             bmp = (Bitmap)bmptmp.Clone();
         }
 
+        //Prebaceno
         public static Bitmap ConvertTo24bpp(Image img)
         {
             var bmp = new Bitmap(img.Width, img.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
@@ -151,6 +160,8 @@ namespace ColorFilter.Model
                 gr.DrawImage(img, new Rectangle(0, 0, img.Width, img.Height));
             return bmp;
         }
+
+        //Prebaceno
         public void convertRGBtoCMYRegular()
         {
             cyan = new Bitmap(bmp.Width, bmp.Height);
@@ -167,6 +178,8 @@ namespace ColorFilter.Model
                 }
             }
         }
+
+        //Prebaceno
         public void convertRGBtoCMYUnsafe()
         {
             InitializeChannelHistograms(m_channelHistograms);
@@ -286,6 +299,8 @@ namespace ColorFilter.Model
             
 
         }
+
+        //Prebaceno
 
         public void compress()
         {
@@ -1331,7 +1346,7 @@ namespace ColorFilter.Model
 
         public void PlayMusic()
         {
-             OpenFileDialog dlg = new OpenFileDialog();
+            OpenFileDialog dlg = new OpenFileDialog();
             // Set filter for file extension and default file extension 
             dlg.DefaultExt = ".wav";
             dlg.Filter = "WAV Files (*.wav)|*.wav";

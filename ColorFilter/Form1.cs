@@ -22,11 +22,15 @@ namespace ColorFilter
         IController m_controller;
         ColorFilter.Model.Model model;
         Controller.Controller controller2;
+        ModelImage modelImage;
+        ModelSound modelSound;
         public Form1()
         {
             InitializeComponent();
             model = new Model.Model();
-            Controller.Controller controller = new Controller.Controller(model, this);
+            modelImage= new ModelImage();
+            modelSound=new ModelSound();
+            Controller.Controller controller = new Controller.Controller(model,modelImage,modelSound, this);
         }
 
         public void AddListener(IController controller)
@@ -55,7 +59,7 @@ namespace ColorFilter
             if (controller2 == null || !controller2.isOpen)
             {
                 ChannelsForm cf = new ChannelsForm();
-                controller2 = new Controller.Controller(model, cf);
+                controller2 = new Controller.Controller(model, modelImage, modelSound, cf);
                 cf.Show();
             }
             else
@@ -186,18 +190,29 @@ namespace ColorFilter
         private void invertUnsafeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             m_controller.handleInvertUnsafe();
-            controller2.getBitmap();
-            controller2.handleconvertRGBtoCMY();
-            controller2.returnCMY();
+
+            try
+            {
+                controller2.getBitmap();
+                controller2.handleconvertRGBtoCMY();
+                controller2.returnCMY();
+            }
+            catch { }
+            
             this.Invalidate();
         }
 
         private void gammaUnsafeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             m_controller.handleGammaUnsafe(0.5,0.5,0.5);
-            controller2.getBitmap();
-            controller2.handleconvertRGBtoCMY();
-            controller2.returnCMY();
+            try
+            {
+                controller2.getBitmap();
+                controller2.handleconvertRGBtoCMY();
+                controller2.returnCMY();
+            }
+            catch { }
+
             this.Invalidate();
         }
 
@@ -217,19 +232,29 @@ namespace ColorFilter
         private void smoothToolStripMenuItem_Click(object sender, EventArgs e)
         {
             m_controller.handleSmooth();
-            controller2.getBitmap();
-            controller2.handleconvertRGBtoCMY();
-            controller2.returnCMY();
-            Invalidate();
+            try
+            {
+                controller2.getBitmap();
+                controller2.handleconvertRGBtoCMY();
+                controller2.returnCMY();
+            }
+            catch { }
+
+            this.Invalidate();
         }
 
         private void edgeDetectHomogenityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             m_controller.handleEdgeDetect();
-            controller2.getBitmap();
-            controller2.handleconvertRGBtoCMY();
-            controller2.returnCMY();
-            Invalidate();
+            try
+            {
+                controller2.getBitmap();
+                controller2.handleconvertRGBtoCMY();
+                controller2.returnCMY();
+            }
+            catch { }
+
+            this.Invalidate();
         }
 
         private void rGBHistogramToolStripMenuItem_Click(object sender, EventArgs e)

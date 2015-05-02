@@ -11,6 +11,8 @@ namespace ColorFilter.Controller
 {
     public class Controller:IController
     {
+        IModel2 m_model_image;
+        IModel2 m_model_sound;
         IModel m_model;
         IView m_view;
         public bool isOpen
@@ -19,17 +21,24 @@ namespace ColorFilter.Controller
             set;
         }
 
-        public Controller(IModel model, IView view)
+        //Ovo takodje menjao
+        public Controller(IModel model,IModel2 modelImage, IModel2 modelSound, IView view)
         {
             m_model = model;
+            m_model_image = modelImage;
+            m_model_sound = modelSound;
             m_view = view;
             m_view.AddListener(this);
         }
+        //I ovo moram da izmenim
         public void handleLoadBitmapFromFIle()
         {
-            m_model.loadBitmapFromFile();
-            m_view.bitmap = m_model.returnBitmap();
-            m_view.imageInBytes = m_model.returnImageInBytes();
+            //m_model.loadBitmapFromFile();
+            //m_view.bitmap = m_model.returnBitmap();
+            //m_view.imageInBytes = m_model.returnImageInBytes();
+
+            m_model_image.Load();
+            m_view.bitmap = (Bitmap)m_model_image.display()[0];
         }
         public void handleGamma(double red, double green, double blue)
         {
@@ -40,10 +49,13 @@ namespace ColorFilter.Controller
         }
         public void handleGammaUnsafe(double red, double green, double blue)
         {
-            m_model.gammaUnsafe(red, green, blue);
-            m_model.saveGamaToUndo();
-            m_model.clearRedo();
-            m_view.bitmap = m_model.returnBitmap();
+            //m_model.gammaUnsafe(red, green, blue);
+            //m_model.saveGamaToUndo();
+            //m_model.clearRedo();
+            //m_view.bitmap = m_model.returnBitmap();
+
+            m_model_image.Apply(new Node("gamma", new Object[] { red, green,blue }));
+            m_view.bitmap = (Bitmap)m_model_image.display()[0];
         }
         public void handleInvert()
         {
@@ -52,51 +64,66 @@ namespace ColorFilter.Controller
             m_model.clearRedo();
             m_view.bitmap = m_model.returnBitmap();
         }
+
+        //Ovo cu da menjam
         public void handleInvertUnsafe()
         {
-            m_model.invertUnsafe();
-            m_model.saveInvertToUndo();
-            m_model.clearRedo();
-            m_view.bitmap = m_model.returnBitmap();
+            //m_model.invertUnsafe();
+            //m_model.saveInvertToUndo();
+            //m_model.clearRedo();
+            //m_view.bitmap = m_model.returnBitmap();
+
+            m_model_image.Apply(new Node("invert", null));
+            m_view.bitmap = (Bitmap)m_model_image.display()[0];
         }
 
         public void handleBrightness(int brightness)
         {
-            m_model.BrightnessRegular(brightness);
-            m_view.bitmap = m_model.returnBitmap();
-            m_model.clearRedo();
+            //m_model.BrightnessRegular(brightness);
+            //m_view.bitmap = m_model.returnBitmap();
+            //m_model.clearRedo();
+            m_model_image.Apply(new Node("brightness", new Object[] { brightness}));
+            m_view.bitmap = (Bitmap)m_model_image.display()[0];
         }
         public void handleSmooth()
         {
-            m_model.smoothFIlter();
-            m_model.saveGamaToUndo();
-            m_model.clearRedo();
-            m_view.bitmap = m_model.returnBitmap();
+            //m_model.smoothFIlter();
+            //m_model.saveGamaToUndo();
+            //m_model.clearRedo();
+            //m_view.bitmap = m_model.returnBitmap();
+            m_model_image.Apply(new Node("smooth", null));
+            m_view.bitmap = (Bitmap)m_model_image.display()[0];
         }
         public void handleEdgeDetect()
         {
-            m_model.edgeDetectHomogenity();
-            m_model.saveGamaToUndo();
-            m_model.clearRedo();
-            m_view.bitmap = m_model.returnBitmap();
+            //m_model.edgeDetectHomogenity();
+            //m_model.saveGamaToUndo();
+            //m_model.clearRedo();
+            //m_view.bitmap = m_model.returnBitmap();
+            m_model_image.Apply(new Node("edge", null));
+            m_view.bitmap = (Bitmap)m_model_image.display()[0];
         }
         public void getBitmap()
         {
             //m_model.convertRGBtoCMYUnsafe();
-            m_view.bitmap = m_model.returnBitmap();
+            m_view.bitmap = (Bitmap)m_model_image.display()[0];
         }
         public void handleconvertRGBtoCMY()
         {
-            m_model.convertRGBtoCMYUnsafe();
             //m_model.convertRGBtoCMYUnsafe();
+            //m_model.convertRGBtoCMYUnsafe();
+
+            m_model_image.Apply(new Node("RGBtoCMY", null));
+            //m_view.bitmap = (Bitmap)m_model_image.display();
         }
         public void returnCMY()
         {
-            m_view.cyan = m_model.returnCyanChannel();
-            m_view.magenta = m_model.returnMagentaChannel();
-            m_view.yellow = m_model.returnYellowChannel();
+            m_view.cyan = (Bitmap)m_model_image.display()[1];
+            m_view.magenta = (Bitmap)m_model_image.display()[2];
+            m_view.yellow = (Bitmap)m_model_image.display()[3];
         }
 
+        //Ovo treba da sredim
         public void handleUndo()
         {
             m_model.Undo();
@@ -109,17 +136,23 @@ namespace ColorFilter.Controller
         }
         public void handleChannels()
         {
-            m_view.cyanChannel = m_model.cyanChannel;
-            m_view.magentaChannel = m_model.magentaChannel;
-            m_view.yellowChannel = m_model.yellowChannel;
+            m_model_image.Apply(new Node("returnHistogram", null));
+            IList<int>[] tmp=(IList<int>[])m_model_image.display()[4];
+            m_view.cyanChannel = tmp[0];
+            m_view.magentaChannel = tmp[1];
+            m_view.yellowChannel = tmp[2];
         }
         public IList<int> returnCyanChannel()
         {
-            return m_model.cyanChannel;
+            //return m_model.cyanChannel;
+            IList<int>[] tmp = (IList<int>[])m_model_image.display()[4];
+            return tmp[0];
         }
         public void handleFrequencyPermission(int maxValue, int flag)
         {
-            m_model.FrequencyPermissionRed(maxValue,flag);
+            //m_model.FrequencyPermissionRed(maxValue,flag);
+            m_model_image.Apply(new Node("FrequencyPermission", new Object[] { maxValue, flag }));
+            
         }
         public void handleCompress()
         {
